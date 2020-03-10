@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Question;
-class QuestionController extends Controller
+
+class ParticipantQuizzController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,6 @@ class QuestionController extends Controller
         //
     }
 
-    public function question(){
-        $question = Question::get();
-        // dd($question);
-        return response()->json(['question' => $question]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +25,7 @@ class QuestionController extends Controller
     {
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
