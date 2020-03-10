@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ParticipantQuizz;
 class ParticipantQuizzController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class ParticipantQuizzController extends Controller
     public function index()
     {
         //
-    }
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +25,7 @@ class ParticipantQuizzController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -35,6 +35,26 @@ class ParticipantQuizzController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function participant(Request $request)
+    {
+        $name = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+
+        if ($name !=null && $email !=null && $phone !=null) {
+            $participant = ParticipantQuizz::create([
+                'name'=> $name,
+                'email'=> $email,
+                'phone'=> $phone
+                ]);
+        
+                return response()->json([ 'message' => 'Jugador Registrado']);
+        }else{
+            return response()->json([ 'message' => 'Datos Invalido']);
+        }
+        
     }
 
     /**

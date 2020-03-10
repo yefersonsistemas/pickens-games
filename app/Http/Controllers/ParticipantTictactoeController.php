@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ParticipantTictactoe;
 class ParticipantTictactoeController extends Controller
 {
     /**
@@ -35,6 +35,26 @@ class ParticipantTictactoeController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function participant(Request $request)
+    {
+        $name = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+
+        if ($name !=null && $email !=null && $phone !=null) {
+            $participant = ParticipantTictactoe::create([
+                'name'=> $name,
+                'email'=> $email,
+                'phone'=> $phone
+                ]);
+        
+                return response()->json([ 'message' => 'Jugador Registrado']);
+        }else{
+            return response()->json([ 'message' => 'Datos Invalido']);
+        }
+        
     }
 
     /**

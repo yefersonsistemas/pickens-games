@@ -18,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/', 'QuestionController@question');
+Route::get('question', 'QuestionController@question'); //lista de las preguntas para la trivia
+Route::post('register/quizz', 'ParticipantQuizzController@participant'); //registro del usurio en la trivia
+Route::post('register/memory', 'ParticipantMemoryController@participant'); //registro del usurio en memoria
+Route::post('register/hangman', 'ParticipantHangmanController@participant'); //registro del usurio en el ahorcado
+Route::post('register/tictactoe', 'ParticipantQTictactoeController@participant'); //registro del usurio en la vieja
