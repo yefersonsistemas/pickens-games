@@ -14,7 +14,12 @@ class CreateRankingMemoryTable extends Migration
     public function up()
     {
         Schema::create('ranking_memory', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('score');
+            $table->string('time');
             $table->timestamps();
         });
     }

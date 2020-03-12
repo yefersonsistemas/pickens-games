@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ParticipantHangman;
-class ParticipantHangmanController extends Controller
+use App\RankingHangman;
+class HangmanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class ParticipantHangmanController extends Controller
      */
     public function index()
     {
-        //
+        $ranking = RankingHangman::get();
+        
+        return response()->json($ranking);
     }
 
     /**

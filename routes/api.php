@@ -17,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+//--------------------------todos los get--------------------------//
+Route::get('question', 'QuestionController@question');        //lista de las preguntas para la trivia
+Route::get('ranking/quizz', 'QuizzController@index');         //lista de las preguntas para la trivia
+Route::get('ranking/memory', 'MemoryController@index');       //lista de las preguntas para la trivia
+Route::get('ranking/hangman', 'HangmanController@index');     //lista de las preguntas para la trivia
+Route::get('ranking/tictactoe', 'TictactoeController@index'); //lista de las preguntas para la trivia
 
-Route::get('question', 'QuestionController@question'); //lista de las preguntas para la trivia
-Route::post('register/quizz', 'ParticipantQuizzController@participant'); //registro del usurio en la trivia
-Route::post('register/memory', 'ParticipantMemoryController@participant'); //registro del usurio en memoria
-Route::post('register/hangman', 'ParticipantHangmanController@participant'); //registro del usurio en el ahorcado
-Route::post('register/tictactoe', 'ParticipantQTictactoeController@participant'); //registro del usurio en la vieja
+//--------------------------todos los post--------------------------//
+Route::post('answers', 'QuestionController@answers');                   //post para enviar la respuestas de la trivia
+Route::post('register/quizz', 'QuizzController@participant');           //registro del usurio en la trivia
+Route::post('register/memory', 'MemoryController@participant');         //registro del usurio en memoria
+Route::post('register/hangman', 'HangmanController@participant');       //registro del usurio en el ahorcado
+Route::post('register/tictactoe', 'TictactoeController@participant');   //registro del usurio en la vieja

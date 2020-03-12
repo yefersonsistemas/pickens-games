@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ParticipantTictactoe;
-class ParticipantTictactoeController extends Controller
+use App\RankingTictactoe;
+class TictactoeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class ParticipantTictactoeController extends Controller
      */
     public function index()
     {
-        //
+        $ranking = RankingTictactoe::get();
+        
+        return response()->json($ranking);
     }
 
     /**

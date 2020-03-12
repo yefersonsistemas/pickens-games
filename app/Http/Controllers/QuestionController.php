@@ -22,6 +22,11 @@ class QuestionController extends Controller
         return response()->json(['question' => $question]);
     }
 
+    public function answers(){
+        $answers = "hola";
+        return response()->json(['answers' => $answers]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

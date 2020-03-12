@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ParticipantQuizz;
-class ParticipantQuizzController extends Controller
+use App\ParticipantMemory;
+use App\RankingMemory;
+class MemoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,10 @@ class ParticipantQuizzController extends Controller
      */
     public function index()
     {
-        //
-    }   
+        $ranking = RankingMemory::get();
+        
+        return response()->json($ranking);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +28,7 @@ class ParticipantQuizzController extends Controller
     {
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +47,7 @@ class ParticipantQuizzController extends Controller
         $phone = $request->phone;
 
         if ($name !=null && $email !=null && $phone !=null) {
-            $participant = ParticipantQuizz::create([
+            $participant = ParticipantMemory::create([
                 'name'=> $name,
                 'email'=> $email,
                 'phone'=> $phone

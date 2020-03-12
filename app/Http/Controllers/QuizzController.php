@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ParticipantMemory;
-class ParticipantMemoryController extends Controller
+use App\ParticipantQuizz;
+use App\RankingQuizz;
+class QuizzController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,10 @@ class ParticipantMemoryController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $ranking = RankingQuizz::get();
+        
+        return response()->json($ranking);
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +28,7 @@ class ParticipantMemoryController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -44,15 +47,15 @@ class ParticipantMemoryController extends Controller
         $phone = $request->phone;
 
         if ($name !=null && $email !=null && $phone !=null) {
-            $participant = ParticipantMemory::create([
+            $participant = ParticipantQuizz::create([
                 'name'=> $name,
                 'email'=> $email,
                 'phone'=> $phone
                 ]);
         
-                return response()->json([ 'message' => 'Jugador Registrado']);
+                return response()->json([ 'message' => 'Registro Exitoso', $participant]);
         }else{
-            return response()->json([ 'message' => 'Datos Invalido']);
+            return response()->json([ 'message' => 'No se Pudo Registrar, Verificar Datos']);
         }
         
     }
